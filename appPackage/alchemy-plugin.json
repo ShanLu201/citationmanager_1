@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.3/schema.json",
+  "schema_version": "v2.3",
+  "name_for_human": "Add-in Skill + Agent for test",
+  "description_for_human": "Get answer for user's question related to Microsoft 365 products",
+  "functions": [
+    {
+      "name": "addcitation",
+      "description": "Action addcitation: take in arg a JSON object, with a citation reference string in the field 'Reference' and a reference type in the field 'Type'.",
+      "states": {
+        "reasoning": {
+          "description": "\n# `addcitation(Reference: str = 'example reference', Type: str = 'IEEE') -> str`  Action addcitation: take in arg a JSON object, with a citation reference string in the field 'Reference' and a reference type in the field 'Type'.",
+          "instructions": "\n- Decide whether to invoke `addcitation(Reference: str = 'example reference', Type: str = 'IEEE')`:\n - Check the last user message in the `conversation_memory` and the tool invocation history in the `turn_memory`:\n    - Based on the `result` from `turn_memory`, do I need to return answers, before calling into this action, please make sure the args value are clear and correct, if not sure, please ask the user to share more information, Action addcitation: take in arg a JSON object, with a citation full reference(not the title name) string in the field 'Reference' and a reference type in the field 'Type'."
+        },
+        "responding": {
+          "description": "",
+          "instructions": "Return the function output directly as it will be used to respond to the user"
+        }
+      }
+    },
+    {
+      "name": "updatecitation",
+      "description": "Action updatecitation: take in arg a JSON object, with a citation index string in the field 'Index' and a citation reference string in the field 'Reference' and a reference type in the field 'Type'. Update the reference and its type of the citation correspond to the reference at index.",
+      "states": {
+        "reasoning": {
+          "description": "\n# `updatecitation(Index: str = '1', Reference: str = 'example reference', Type: str = 'IEEE') -> str`  Action updatecitation: take in arg a JSON object, with a citation reference string in the field 'Reference' and a reference type in the field 'Type'. Update the reference and its type of the citation correspond to the reference at index.",
+          "instructions": "\n- Decide whether to invoke `updatecitation(Reference: str = 'example reference', Type: str = 'IEEE')`:\n - Check the last user message in the `conversation_memory` and the tool invocation history in the `turn_memory`:\n    - Based on the `result` from `turn_memory`, do I need to return answers, before calling into this action, please make sure the args value are clear and correct, if not sure, please ask the user to share more information, Action addcitation: take in arg a JSON object, with a citation index string in the field 'Index' and  a citation full reference(not the title name) string in the field 'Reference' and a reference type in the field 'Type'."
+        },
+        "responding": {
+          "description": "",
+          "instructions": "Check the output and input, summarize the result based on input, please note that the response may be used as the input for the next action invocation"
+        }
+      }
+    },
+    {
+      "name": "removecitation",
+      "description": "Action removecitation: take in arg a JSON object, with a citation index string in the field 'Index'. Delete the citation correspond to the index of citation.",
+      "states": {
+        "reasoning": {
+          "description": "\n# `removecitation(Index: str = '1') -> str`  Action removecitation: take in arg a JSON object, with a citation index string in the field 'Index'. Delete the citation correspond to the index.",
+          "instructions": "\n- Decide whether to invoke `removecitation(Index: str = '1')`:\n - Check the last user message in the `conversation_memory` and the tool invocation history in the `turn_memory`:\n    - Based on the `result` from `turn_memory`, do I need to return answers, before calling into this action, please make sure the args value are clear and correct, if not sure, please ask the user to share more information, Action removecitation: take in arg a JSON object, with a citation index string in the field 'Index'. Delete the citation correspond to the index."
+        },
+        "responding": {
+          "description": "",
+          "instructions": "Use the output and input of this action to respond to the user, summarize the output and input. Please note the response may be used as input for next action invocation"
+        }
+      }
+    }
+  ],
+  "runtimes": [
+    {
+      "type": "LocalPlugin",
+      "spec": {
+        "local_endpoint": "Microsoft.Office.Addin"
+      },
+      "run_for_functions": ["addcitation", "updatecitation", "removecitation"]
+    }
+  ]
+}

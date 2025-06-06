@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.3/schema.json",
+  "version": "v1.3",
+  "name": "Citation Mananger",
+  "description": "You are an agent for working with add-in. You can work with word document content like insert/update/delete citation reference.",
+  "instructions": "You are an agent for working with add-in. You can work with word document content like insert/update/delete citation reference.",
+  "conversation_starters": [
+    {
+      "title": "Add citation (for word)",
+      "text": "Find the reference for article named as 'Limiting social media use decreases depression in youth' and add it into current document as a citation with type 'IEEE', please find the correct reference based on the given title firstly. Tell me how long it took in seconds."
+    },
+    {
+      "title": "Change citation (for word)",
+      "text": "Change the citation at index '1' to reference with title named as 'Self-esteem, but not age, moderates the influence of viewing social media on body image in adult females' and reference type 'Vancouver', please find the correct reference based on the given title firstly. Tell me how long it took in seconds."
+    },
+    {
+      "title": "Remove citation (for word)",
+      "text": "Remove the citation with index '2' in the document. Tell me how long it took in seconds."
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "WebSearch"
+    },
+    {
+      "name": "GraphicArt"
+    },
+    {
+      "name": "CodeInterpreter"
+    }
+  ],
+  "actions": [
+    {
+      "id": "alchemyPlugin",
+      "file": "alchemy-plugin.json"
+    }
+  ]
+}
