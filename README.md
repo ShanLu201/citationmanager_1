@@ -1,6 +1,6 @@
 # AgentplusAddinskill
 
-Repo for DA plus addinskill sample: citation management for Word document.
+DA plus addinskill sample: citation management for Word document.
 
 ## Supported Actions
 
